@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pylearn</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+  <link href="{{url_for('static', filename='css/homepage.css')}}" rel="stylesheet">
+</head>
+<body class="news">
+        <header>
+          <div class="nav">
+            
+            <ul>
+              <li class="home"><a href="/">Train</a></li>
+              <li class="tutorials"><a class="active" href="/query">Predict</a></li>
+              <li class="about"><a href="/view">View</a></li>
+            </ul>
+          </div>
+        </header>
+      </body>
+<body>
+  <img src="static/mlab.png"/>
+  <div class="result">
+      {{ message }}
+  </div>
+  <div class= "buttons">  
+    <!-- <input type="submit" value="Download" id="summarize"> -->
+    <!-- <form method="get" action="file.doc">
+      <button type="submit">Download</button>
+    </form> -->
+    <!-- <a href="/download" target="blank">
+      <button type="submit">Download</button>
+    </a> -->
+    <form class="form-signin" action="/query" method="post">
+              <label for="inputEmail" class="sr-only">Intput Variables</label><p></p>
+              <!-- <input name="predict" type="text" class="form-control" placeholder="" required autofocus><p></p> -->
+              {% for row in inputs %}
+                <tr>
+                    <td>{{ row }}</td>
+                      <input type="text" name={{row}}>
+                </tr><p></p>
+              {% endfor %}
+    <p></p>
+    <a href="/">
+      <button type="submit">Predict</button>
+    </a>
+    </form>
+  </div>
+</body>
+</html>

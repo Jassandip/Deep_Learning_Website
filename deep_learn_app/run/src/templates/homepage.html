@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pylearn</title>
+  <link href="{{url_for('static', filename='css/homepage.css')}}" rel="stylesheet">
+</head>
+  <body class="news">
+  <header>
+    <div class="nav">
+      
+      <ul>
+        <li class="home"><a  class="active" href="/">Train</a></li>
+        <li class="tutorials"><a href="/query">Predict</a></li>
+        <li class="about"><a href="/view">View</a></li>
+      </ul>
+    </div>
+  </header>
+</body>
+<body>
+  <img src="static/mlab.png"/>
+  <div class="form">  
+    <form id="upload" method="POST" enctype="multipart/form-data">  
+      <label for="form-search">
+      <div class="form">
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+        <label for="fileselect">Files to upload:</label>
+        <input type="file" id="fileselect" name="fileselect" multiple="multiple" />
+      </div>
+      <div class= "buttons">
+        <input type="submit" value="Train" id="summarize">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

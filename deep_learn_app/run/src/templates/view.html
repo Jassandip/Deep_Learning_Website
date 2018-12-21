@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pylearn</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+  <link href="{{url_for('static', filename='css/viewpage.css')}}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <title>Basic Line Chart</title>
+  
+
+  <!-- <link href="../../assets/styles.css" rel="stylesheet" /> -->
+  <!-- <link href="../../../../node_modules/apexcharts/src/assets/styles.css" rel="stylesheet" /> -->
+
+  <style>
+      #chart1 {
+
+          /* width: 600px; */
+          width: 100%;
+          height: 100%;
+          /* margin-left: 0; */
+          text-align: left;
+          float: left;
+          vertical-align:top;
+          overflow: auto;
+      }
+      #chart2 {
+
+          /* width: 600px; */
+          width: 100%;
+          height: 100%;
+          /* margin-left: 0px; */
+          /* margin-right: 0px; */
+          text-align: right;
+          float: right;
+          vertical-align:top;
+          overflow: auto;
+      }
+      #chart3 {
+          /* max-width: 650px; */
+          /* width: 50%; */
+          width: 100%;
+          height: 100%;
+          margin: 35px right;
+          text-align: left;
+          vertical-align: bottom;
+          overflow: auto;
+      }
+      #chart4 {
+          /* max-width: 650px; */
+          width: 100%;
+          height: 100%;
+          margin: 35px left;
+          /* text-align: right; */
+          vertical-align: bottom;
+          overflow: auto;
+      }
+  </style>
+</head>
+<body class="news">
+        <header>
+          <div class="nav">
+            
+            <ul>
+              <li class="home"><a href="/">Train</a></li>
+              <li class="tutorials"><a href="/query">Predict</a></li>
+              <li class="about"><a class="active" href="/view">View</a></li>
+            </ul>
+          </div>
+        </header>
+      </body>
+<body>
+    <p></p>
+  <!-- <img src="static/mlab.png"/> -->
+  
+  <!-- <div id="chart1">
+  </div>
+<div id="chart2">
+</div>
+<div id="chart3">
+</div>
+<div id="chart4"> -->
+  <!-- </div> -->
+  <table style="width: 100%; height: 100%;">
+        <tr>
+            <td style="width: 50%; height: 100%"><div id="chart1"></div></td>
+            <td style="width: 50%; height: 100%"><div id="chart2"></div></td>
+        </tr>
+        <tr>
+                <td style="width: 50%; height: 100%"><div id="chart3"></div></td>
+                <td style="width: 50%; height: 100%"><div id="chart4"></div></td>
+            </tr>
+     <table>
+  <script>
+      var options = {
+          chart: {
+              height: 350,
+              type: 'line',
+              zoom: {
+                  enabled: false
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              curve: 'straight'
+          },
+          series: [{
+              name: "Loss",
+              data: [581.4521313342419, 47.903305535788064, 15.375651076599793, 11.601134866148561, 10.288212498465738, 9.32604707990374, 8.69359379024296, 7.993110861097064, 7.648509046533605, 7.0786074963244765, 6.7029817287738505, 6.453446838881943]
+          }],
+          title: {
+              text: 'Loss for training set',
+              align:'center'
+          },
+          grid: {
+              row: {
+                  colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                  opacity: 0.5
+              },
+          },
+          xaxis: {
+              categories: [10,20,30,40,50,60,70,80,90,100,110],
+              title:{ text: "Epochs" 
+          }
+          },
+          yaxis: { title:{ text: "Loss"}}
+      }
+
+      var chart1= new ApexCharts(
+          document.querySelector("#chart1"),
+          options
+      );
+
+      chart1.render();
+
+      var options = {
+          chart: {
+              height: 350,
+              type: 'line',
+              zoom: {
+                  enabled: false
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              curve: 'straight'
+          },
+          series: [{
+              name: "MAE",
+              data: [22.310104632115625, 5.353986881591461, 2.826263645193079, 2.4259707089308855, 2.2728805279993747, 2.178950865190108, 2.0833460171144087, 2.002414561889984, 1.9342393966821523, 1.8924728422374515, 1.840374265398298, 1.8366694725476778]
+          }],
+          title: {
+              text: 'Mean Absolute Error (MAE) for traning set',
+              align: 'center'
+          },
+          grid: {
+              row: {
+                  colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                  opacity: 0.5
+              },
+          },
+          xaxis: {
+              categories: [10,20,30,40,50,60,70,80,90,100,110],
+              title:{ text: "Epochs" 
+          }
+          },
+          yaxis: { title:{ text: "Mean Absolute Error"}}
+      }
+
+      var chart2 = new ApexCharts(
+          document.querySelector("#chart2"),
+          options
+      );
+
+      chart2.render();
+      var options = {
+          chart: {
+              height: 350,
+              type: 'line',
+              zoom: {
+                  enabled: false
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              curve: 'straight'
+          },
+          series: [{
+              name: "Loss",
+              data: [505.90386459853625, 52.79447773524693, 20.51386162474915, 13.64822526030488, 12.202867969051821, 10.209015877692254, 9.862020723112337, 9.832730859190553, 9.40323539356609, 10.149026514409663, 9.958838651468465, 8.893130061390636]
+          }],
+          title: {
+              text: 'Loss for Validation set',
+              align: 'center'
+          },
+          grid: {
+              row: {
+                  colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                  opacity: 0.5
+              },
+          },
+          xaxis: {
+              categories: [10,20,30,40,50,60,70,80,90,100,110],
+              title:{ text: "Epochs" 
+          }
+          },
+          yaxis: { title:{ text: "Loss"}}
+      }
+
+      var chart3 = new ApexCharts(
+          document.querySelector("#chart3"),
+          options
+      );
+
+      chart3.render();
+      var options = {
+          chart: {
+              height: 350,
+              type: 'line',
+              zoom: {
+                  enabled: false
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          stroke: {
+              curve: 'straight'
+          },
+          series: [{
+              name: "Desktops",
+              data: [20.5813227223826, 5.525085103380811, 3.2405498892396363, 2.53404388322935, 2.3458782788161394, 2.0957608196761583, 2.106167284996955, 2.0933503187619724, 2.087603495671199, 2.214774262774122, 2.2663718920487623, 2.008968169872577]
+          }],
+          title: {
+              text: 'Mean Absolute Error (MAE) for validation set',
+              align: 'center'
+          },
+          grid: {
+              row: {
+                  colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                  opacity: 0.5
+              },
+          },
+          xaxis: {
+              categories: [10,20,30,40,50,60,70,80,90,100,110],
+              title:{ text: "Epochs" 
+          }
+          },
+          yaxis: { title:{ text: "Mean Absolute Error"}}
+      }
+
+      var chart4 = new ApexCharts(
+          document.querySelector("#chart4"),
+          options
+      );
+
+      chart4.render();
+      
+  </script>
+</body>
+</html>
